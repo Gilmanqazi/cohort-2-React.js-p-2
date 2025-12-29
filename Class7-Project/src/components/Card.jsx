@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Card = (props) => {
-  console.log(props)
+ 
   return (
-    <div  className=' w-[28vw] h-80 bg-white rounded-xl flex items-center flex-col gap-4 p-5 text-black'>
+    <div  className=' w-[19vw] h-80 bg-white rounded-xl flex items-center flex-col gap-4 p-5 text-black'>
     <img className='h-15 w-15 rounded-full object-center object-cover' src={props.elem.imageURL} alt="" /> 
 
    <h1 className='text-xl font-semibold'>{props.elem.userName}</h1>

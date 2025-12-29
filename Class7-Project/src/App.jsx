@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./components/Card.jsx";
 
 const App = () => {
@@ -9,10 +9,19 @@ const App = () => {
 
   const [allUsers, setAllUsers] = useState([]);
 
+  useEffect(()=>{
+    const savedUser = JSON.parse(localStorage.getItem("allUsers"))
+    if(savedUser){
+      setAllUsers(savedUser)
+    }
+  },[])
+
   function submitHandeler(e) {
     e.preventDefault();
     
-setAllUsers([...allUsers,{userName,userRole,userdesc,imageURL}])
+const newUser = ([...allUsers,{userName,userRole,userdesc,imageURL}])
+setAllUsers(newUser)
+localStorage.setItem("allUsers",JSON.stringify(newUser))
     setUserName("");
     setImageURL("");
     setUserRole("");
@@ -23,6 +32,7 @@ setAllUsers([...allUsers,{userName,userRole,userdesc,imageURL}])
  const copyUser = [...allUsers]
  copyUser.splice(idx,1)
  setAllUsers(copyUser)
+ localStorage.setItem("allUsers",JSON.stringify(copyUser))
  }
 
   return (
